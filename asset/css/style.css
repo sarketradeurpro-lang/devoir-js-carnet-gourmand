@@ -1,4 +1,4 @@
-/* ========== ÉTAPE 1 : BASE ========== */
+/* ===== BASE ===== */
 * {
   box-sizing: border-box;
 }
@@ -24,7 +24,7 @@ textarea {
   font-size: 100%;
 }
 
-/* ========== ÉTAPE 2 : EN-TÊTE ========== */
+/* ===== EN-TÊTE ===== */
 header {
   display: flex;
   align-items: center;
@@ -49,7 +49,7 @@ header p { margin: 0; }
 header p:first-child { font-weight: 700; }
 header p:last-child  { color: #6b7280; font-size: 14px; }
 
-/* ========== ÉTAPE 3 : CONTENEUR PRINCIPAL ========== */
+/* ===== CONTENEUR PRINCIPAL : 2 colonnes ===== */
 .conteneur {
   max-width: 1050px;
   margin: 0 auto;
@@ -59,7 +59,7 @@ header p:last-child  { color: #6b7280; font-size: 14px; }
   gap: 16px;
 }
 
-/* ========== ÉTAPE 4 : CARTES ========== */
+/* ===== CARTES ===== */
 .carte {
   background: #ffffff;
   border: 1px solid #e5e7eb;
@@ -79,7 +79,7 @@ article > p { color: #6b7280; }
 .zone-recette ul,
 .zone-recette ol { padding-left: 24px; }
 
-/* ========== ÉTAPE 5 : FORMULAIRE ========== */
+/* ===== FORMULAIRE ===== */
 label {
   display: block;
   margin: 16px 0 6px;
@@ -123,9 +123,10 @@ small {
   cursor: pointer;
 }
 
-/* ========== ÉTAPE 6 : MESSAGE D'ERREUR ========== */
+/* ===== MESSAGE D'ERREUR ===== */
 #message-erreur { margin: 0; }
 
+/* La boîte n'apparaît que lorsque le JS y écrit un texte */
 #message-erreur:not(:empty) {
   margin-top: 12px;
   padding: 10px 12px;
@@ -134,7 +135,7 @@ small {
   color: #dc2626;
 }
 
-/* ========== ÉTAPE 7 : COMMENTAIRES ========== */
+/* ===== COMMENTAIRES ===== */
 #liste-commentaires {
   list-style: none;
   margin: 0;
@@ -162,7 +163,7 @@ small {
   cursor: pointer;
 }
 
-/* ========== ÉTAPE 8 : PIED DE PAGE ========== */
+/* ===== PIED DE PAGE ===== */
 footer {
   padding: 16px;
   border-top: 1px solid #e5e7eb;
@@ -173,7 +174,7 @@ footer {
 
 footer p { margin: 0; }
 
-/* ========== ÉTAPE 9 : RESPONSIVE ========== */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
   .conteneur {
     grid-template-columns: 1fr;

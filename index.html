@@ -2,20 +2,15 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- indispensable pour le responsive -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Le Carnet Gourmand – Pâtes crémeuses au citron</title>
-
-  <!-- CSS : chemin imposé par le sujet -->
   <link rel="stylesheet" href="asset/css/style.css">
-
-  <!-- JS : dans un fichier séparé, jamais dans le HTML. defer = exécuté après lecture du HTML -->
   <script src="asset/js/script.js" defer></script>
 </head>
 <body>
 
-  <!-- ZONE 1 : en-tête -->
+  <!-- En-tête -->
   <header>
-    <!-- Colle ici l'emoji du logo donné dans ton sujet -->
     <span class="logo" aria-hidden="true">🍲</span>
     <div>
       <p>Le Carnet Gourmand</p>
@@ -23,15 +18,14 @@
     </div>
   </header>
 
-  <!-- ZONES 2 à 4 : contenu principal (un seul <main> par page) -->
-  <main class="conteneur"> <!-- conteneur : max 1050px, centré, padding 16px (CSS) -->
+  <!-- Contenu principal : recette à gauche, formulaire et commentaires à droite -->
+  <main class="conteneur">
 
-    <!-- ZONE 2 : la recette (colonne gauche) -->
     <article class="carte">
       <h1>Pâtes crémeuses au citron</h1>
       <p>Laissez votre avis sur cette recette grâce au formulaire ci-contre.</p>
 
-      <div class="zone-recette"> <!-- fond #fafafa (CSS) -->
+      <div class="zone-recette">
         <h2>Ingrédients</h2>
         <ul>
           <li>Pâtes</li>
@@ -49,10 +43,8 @@
       </div>
     </article>
 
-    <!-- Colonne droite : une seule carte (formulaire + commentaires) -->
     <div class="carte">
 
-      <!-- ZONE 3 : le formulaire -->
       <section>
         <h2>Laisser un commentaire</h2>
 
@@ -67,12 +59,11 @@
 
           <button type="button" class="btn-publier">Publier</button>
 
-          <!-- Vide au départ : le JS écrira le message d'erreur ici -->
+          <!-- Rempli dynamiquement par le JavaScript -->
           <p id="message-erreur" role="alert"></p>
         </form>
       </section>
 
-      <!-- ZONE 4 : la liste des commentaires -->
       <section>
         <h2>Commentaires</h2>
         <ul id="liste-commentaires">
@@ -92,7 +83,6 @@
     </div>
   </main>
 
-  <!-- ZONE 5 : pied de page -->
   <footer>
     <p>Devoir JavaScript — Frontend</p>
   </footer>
