@@ -1,99 +1,99 @@
 // ============================================================
 // 1. SÉLECTION DES ÉLÉMENTS
 // ============================================================
-const formulaire = document.querySelector("#form-commentaire");
-const champNom = document.querySelector("#nom");
-const champCommentaire = document.querySelector("#commentaire");
-const messageErreur = document.querySelector("#message-erreur");
-const listeCommentaires = document.querySelector("#liste-commentaires");
-
+const boutonPublier = document.querySelector(".btn-publier");
+const champNom = document.getElementById("nom");
+const champCommentaire = document.getElementById("commentaire");
+const messageErreur = document.getElementById("message-erreur");
+const listeCommentaires = document.getElementById("liste-commentaires");
 
 // ============================================================
-// 2. SUPPRESSION : branche le bouton Supprimer d'une carte
+// 2. AFFICHER ET EFFACER LE MESSAGE D'ERREUR
 // ============================================================
-function activerSuppression(carte) {
-  // On cherche le bouton À L'INTÉRIEUR de la carte
-  const bouton = carte.querySelector(".btn-supprimer");
+function afficherErreur(texte) {
+  // On vide d'abord le paragraphe (comme dans le cours DOM)
+  messageErreur.innerHTML = "";
+  // Puis on crée le nouveau texte et on l'ajoute
+  let texteErreur = document.createTextNode(texte);
+  messageErreur.appendChild(texteErreur);
+}
 
+function effacerErreur() {
+  messageErreur.innerHTML = "";
+}
+
+// ============================================================
+// 3. SUPPRESSION : brancher un bouton Supprimer
+// ============================================================
+function activerSuppression(bouton) {
   bouton.addEventListener("click", function () {
-    carte.remove(); // retire la carte de la page
+    // parentNode : le <li> qui contient ce bouton
+    bouton.parentNode.remove();
   });
 }
 
-
 // ============================================================
-// 3. CRÉATION D'UNE CARTE (sans innerHTML)
+// 4. CRÉATION D'UNE CARTE (les 5 étapes de ton cours DOM)
 // ============================================================
 function creerCommentaire(nom, texte) {
   // La carte
-  const carte = document.createElement("li");
-  carte.setAttribute("class", "commentaire");
+  let carte = document.createElement("li");
+  carte.classList.add("commentaire");
 
   // Le nom de l'auteur
-  const titre = document.createElement("h3");
-  titre.textContent = nom;
+  let titre = document.createElement("h3");
+  let texteTitre = document.createTextNode(nom);
+  titre.appendChild(texteTitre);
 
   // Le texte du commentaire
-  const paragraphe = document.createElement("p");
-  paragraphe.textContent = texte;
+  let paragraphe = document.createElement("p");
+  let texteParagraphe = document.createTextNode(texte);
+  paragraphe.appendChild(texteParagraphe);
 
   // Le bouton Supprimer
-  const bouton = document.createElement("button");
-  bouton.setAttribute("type", "button");
-  bouton.setAttribute("class", "btn-supprimer");
-  bouton.textContent = "🗑️ Supprimer";
+  let bouton = document.createElement("button");
+  let texteBouton = document.createTextNode("🗑️ Supprimer");
+  bouton.appendChild(texteBouton);
+  bouton.classList.add("btn-supprimer");
+  activerSuppression(bouton);
 
   // On assemble la carte
   carte.appendChild(titre);
   carte.appendChild(paragraphe);
   carte.appendChild(bouton);
 
-  // Après l'assemblage : le bouton est maintenant dans la carte
-  activerSuppression(carte);
-
   return carte;
 }
 
-
 // ============================================================
-// 4. ENVOI DU FORMULAIRE
+// 5. CLIC SUR "PUBLIER"
 // ============================================================
-formulaire.addEventListener("submit", function (event) {
-  // Empêche le rechargement de la page
-  event.preventDefault();
+boutonPublier.addEventListener("click", function () {
+  let nom = champNom.value;
+  let texte = champCommentaire.value;
 
-  // On lit les champs (trim enlève les espaces autour)
-  const nom = champNom.value.trim();
-  const texte = champCommentaire.value.trim();
-
-  // Validation : si une règle échoue, message + on s'arrête (return)
   if (nom.length < 2) {
-    messageErreur.textContent = "Le nom doit contenir au moins 2 caractères.";
-    return;
+    afficherErreur("Le nom doit contenir au moins 2 caractères.");
+  } else if (texte.length < 10) {
+    afficherErreur("Le commentaire doit contenir au moins 10 caractères.");
+  } else {
+    // Tout est valide : on ajoute la carte à la liste
+    listeCommentaires.appendChild(creerCommentaire(nom, texte));
+
+    // On vide le formulaire
+    champNom.value = "";
+    champCommentaire.value = "";
+
+    // On efface une éventuelle erreur précédente
+    effacerErreur();
   }
-
-  if (texte.length < 10) {
-    messageErreur.textContent = "Le commentaire doit contenir au moins 10 caractères.";
-    return;
-  }
-
-  // Tout est valide : on ajoute la carte en haut de la liste
-  listeCommentaires.prepend(creerCommentaire(nom, texte));
-
-  // On vide le formulaire
-  champNom.value = "";
-  champCommentaire.value = "";
-
-  // On efface l'erreur (texte STRICTEMENT vide pour le CSS :empty)
-  messageErreur.textContent = "";
 });
 
-
 // ============================================================
-// 5. CARTES DÉJÀ DANS LE HTML (Téo et Léa)
+// 6. COMMENTAIRES DÉJÀ DANS LE HTML (Téo et Léa)
 // ============================================================
-const cartesExistantes = document.querySelectorAll(".commentaire");
+let boutonTeo = document.getElementById("suppr-teo");
+let boutonLea = document.getElementById("suppr-lea");
 
-cartesExistantes.forEach(function (carte) {
-  activerSuppression(carte);
-});
+activerSuppression(boutonTeo);
+activerSuppression(boutonLea);
