@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- indispensable pour le responsive -->
+  <title>Le Carnet Gourmand – Pâtes crémeuses au citron</title>
+
+  <!-- CSS : chemin imposé par le sujet -->
+  <link rel="stylesheet" href="asset/css/style.css">
+
+  <!-- JS : dans un fichier séparé, jamais dans le HTML. defer = exécuté après lecture du HTML -->
+  <script src="asset/js/script.js" defer></script>
+</head>
+<body>
+
+  <!-- ZONE 1 : en-tête -->
+  <header>
+    <!-- Colle ici l'emoji du logo donné dans ton sujet -->
+    <span class="logo" aria-hidden="true"> </span> 
+    <div>
+      <p>Le Carnet Gourmand</p>
+      <p>Avis des lecteurs</p>
+    </div>
+  </header>
+
+  <!-- ZONES 2 à 4 : contenu principal (un seul <main> par page) -->
+  <main class="conteneur"> <!-- conteneur : max 1050px, centré, padding 16px (CSS) -->
+
+    <!-- ZONE 2 : la recette (colonne gauche) -->
+    <article class="carte">
+      <h1>Pâtes crémeuses au citron</h1>
+      <p>Laissez votre avis sur cette recette grâce au formulaire ci-contre.</p>
+
+      <div class="zone-recette"> <!-- fond #fafafa (CSS) -->
+        <h2>Ingrédients</h2>
+        <ul>
+          <li>Pâtes</li>
+          <li>Crème</li>
+          <li>Citron</li>
+          <li>Parmesan</li>
+        </ul>
+
+        <h2>Préparation</h2>
+        <ol>
+          <li>Cuire les pâtes.</li>
+          <li>Mélanger la crème et le citron.</li>
+          <li>Ajouter le parmesan.</li>
+        </ol>
+      </div>
+    </article>
+
+    <!-- Colonne droite : une seule carte (formulaire + commentaires) -->
+    <div class="carte">
+
+      <!-- ZONE 3 : le formulaire -->
+      <section>
+        <h2>Laisser un commentaire</h2>
+
+        <form id="form-commentaire">
+          <label for="nom">Votre nom</label>
+          <input type="text" id="nom" name="nom" placeholder="Ex : Léa" aria-describedby="aide-nom">
+          <small id="aide-nom">Minimum 2 caractères</small>
+
+          <label for="commentaire">Votre commentaire</label>
+          <textarea id="commentaire" name="commentaire" placeholder="Votre avis sur la recette..." aria-describedby="aide-commentaire"></textarea>
+          <small id="aide-commentaire">Minimum 10 caractères</small>
+
+          <button type="button" class="btn-publier">Publier</button>
+
+          <!-- Vide au départ : le JS écrira le message d'erreur ici -->
+          <p id="message-erreur" role="alert"></p>
+        </form>
+      </section>
+
+      <!-- ZONE 4 : la liste des commentaires -->
+      <section>
+        <h2>Commentaires</h2>
+        <ul id="liste-commentaires">
+          <li class="commentaire">
+            <h3>Téo</h3>
+            <p>Superbe recette !</p>
+            <button type="button" class="btn-supprimer">
+              <span aria-hidden="true">🗑️</span> Supprimer
+            </button>
+          </li>
+          <li class="commentaire">
+            <h3>Léa</h3>
+            <p>Test de commentaire</p>
+            <button type="button" class="btn-supprimer">
+              <span aria-hidden="true">🗑️</span> Supprimer
+            </button>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ZONE 5 : pied de page -->
+  <footer>
+    <p>Devoir JavaScript — Frontend</p>
+  </footer>
+
+</body>
+</html>
